@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:fluttertest_altice/models/post.dart';
 import 'package:fluttertest_altice/utils/constants.dart' as c;
 
-class PostService {
+class PostProvider {
   Future<List<Post>> getPosts() async {
     final uri = Uri.parse("${c.API_URL}/posts");
     final response = await http.get(uri);
@@ -19,12 +19,11 @@ class PostService {
         body.forEach((element) {
           posts.add(Post.fromJson(element));
         });
-
-        return posts;
       }
 
       return posts;
     } catch (e) {
+      print("Error al obtener posts: $e");
       return [];
     }
   }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertest_altice/cubit/post_cubit.dart';
+
+import 'package:fluttertest_altice/BLoC/Post/post_cubit.dart';
+import 'package:fluttertest_altice/models/post.dart';
+import 'package:fluttertest_altice/widgets/post_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context).textTheme;
     final postCubit = context.read<PostCubit>();
     postCubit.getPosts();
 
@@ -13,6 +16,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Listado de Posts"),
+        centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -23,24 +27,7 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is PostFetched) {
-              return ListView.builder(
-                itemCount: state.posts!.length,
-                itemBuilder: (_, i) => Card(
-                  child: ListTile(
-                    title: Text(
-                      state.posts![i].title,
-                      style: _theme.headline6,
-                    ),
-                    subtitle: Text(
-                      state.posts![i].body,
-                      style: _theme.bodyText2,
-                      overflow: TextOverflow.fade,
-                    ),
-                    onTap: () {},
-                    trailing: CircleAvatar(),
-                  ),
-                ),
-              );
+              return PostsList(posts: state.posts!);
             } else if (state is PostError) {
               return Center(
                 child: Text(state.error),
@@ -50,6 +37,22 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class PostsList extends StatelessWidget {
+  const PostsList({Key? key, required List<Post> posts})
+      : this.posts = posts,
+        super(key: key);
+
+  final List<Post> posts;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: posts.length,
+      itemBuilder: (_, i) => PostWidget(post: posts[i]),
     );
   }
 }
