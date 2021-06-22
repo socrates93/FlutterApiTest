@@ -23,7 +23,8 @@ class PostCubit extends Cubit<PostState> {
       } else
         emit(PostError("No se obtuvo ningun resultado en la petición."));
     } catch (e) {
-      emit(PostError("Error al realizar petición: $e"));
+      emit(PostError(
+          "Error al realizar petición. Favor revise su conexión a internet."));
     }
   }
 }

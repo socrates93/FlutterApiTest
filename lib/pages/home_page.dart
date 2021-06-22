@@ -14,6 +14,45 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              color: Theme.of(context).primaryColor,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * .2,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  maxRadius: 40,
+                  child: Text(
+                    "SJ",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text("Sobre la app"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed("appdetails");
+              },
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 34, left: 16),
+              child: Text(
+                "Versión 1.0.0",
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text("Listado de Posts"),
         centerTitle: false,

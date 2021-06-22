@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:fluttertest_altice/models/user.dart';
+
 Post postFromJson(String str) => Post.fromJson(json.decode(str));
 
 String postToJson(Post data) => json.encode(data.toJson());
@@ -10,12 +12,14 @@ class Post {
     required this.id,
     required this.title,
     required this.body,
+    this.user,
   });
 
   int userId;
   int id;
   String title;
   String body;
+  User? user;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
         userId: json["userId"],
