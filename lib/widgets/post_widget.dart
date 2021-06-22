@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:fluttertest_altice/BLoC/Post/post_cubit.dart';
 import 'package:fluttertest_altice/models/post.dart';
 

@@ -2,21 +2,21 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import 'package:fluttertest_altice/models/post.dart';
-import 'package:fluttertest_altice/services/posts_provider.dart';
+import 'package:fluttertest_altice/providers/posts_provider.dart';
 
 part 'post_state.dart';
 
 class PostCubit extends Cubit<PostState> {
-  final PostService _postService;
+  final PostProvider _postProvider;
   Post? currentPost;
 
-  PostCubit(this._postService) : super(PostInitial());
+  PostCubit(this._postProvider) : super(PostInitial());
 
   Future getPosts() async {
     try {
       emit(PostFetching());
 
-      final resultSet = await _postService.getPosts();
+      final resultSet = await _postProvider.getPosts();
 
       if (resultSet.length > 0) {
         emit(PostFetched(resultSet));
