@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertest_altice/cubit/post_cubit.dart';
-import 'package:fluttertest_altice/services/posts_provider.dart';
 
+import 'package:fluttertest_altice/BLoC/Post/post_cubit.dart';
+import 'package:fluttertest_altice/services/posts_provider.dart';
 import 'package:fluttertest_altice/utils/routes.dart' as r;
 
 void main() => runApp(MyApp());

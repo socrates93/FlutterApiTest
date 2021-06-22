@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
+
 import 'package:fluttertest_altice/models/post.dart';
 import 'package:fluttertest_altice/services/posts_provider.dart';
-import 'package:meta/meta.dart';
 
 part 'post_state.dart';
 
 class PostCubit extends Cubit<PostState> {
   final PostService _postService;
+  Post? currentPost;
 
   PostCubit(this._postService) : super(PostInitial());
 
