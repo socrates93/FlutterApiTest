@@ -80,7 +80,7 @@ class DetailedPost extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * .905,
+              width: MediaQuery.of(context).size.width * .8,
               padding: EdgeInsets.only(left: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
