@@ -8,9 +8,10 @@ import 'package:fluttertest_altice/utils/constants.dart' as c;
 class UserProvider {
   Future<User?> getUserById(int id) async {
     final uri = Uri.parse("${c.API_URL}/users/$id");
-    final response = await http.get(uri);
 
     try {
+      final response = await http.get(uri);
+
       if (response.statusCode == 200) {
         final body = json.decode(response.body);
 

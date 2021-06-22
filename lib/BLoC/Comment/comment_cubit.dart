@@ -23,7 +23,8 @@ class CommentCubit extends Cubit<CommentState> {
       } else
         emit(CommentError("Este post no tiene ningún comentario."));
     } catch (e) {
-      emit(CommentError("Error al realizar petición: $e"));
+      emit(CommentError(
+          "Error al realizar petición. Favor revise su conexión a internet."));
     }
   }
 }
