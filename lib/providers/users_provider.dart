@@ -12,7 +12,7 @@ class UserProvider {
 
     try {
       if (response.statusCode == 200) {
-        final body = json.decode(response.body)[0];
+        final body = json.decode(response.body);
 
         return User.fromJson(body);
       }

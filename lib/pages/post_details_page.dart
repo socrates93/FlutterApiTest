@@ -28,10 +28,13 @@ class PostDetailsPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: PostWidget(post: currentPost),
+              child: PostWidget(post: currentPost, resumed: false),
             ),
             Center(
-              child: Text("Sección de comentarios"),
+              child: Text(
+                "Sección de comentarios",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(
               height: 16,
